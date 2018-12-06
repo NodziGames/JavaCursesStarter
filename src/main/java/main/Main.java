@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         //Init app
-        Application app = new Application(150, 40);
+        Application app = new Application(150, 40, "Example Application", "menu");
 
         //Configures App
         app.init();

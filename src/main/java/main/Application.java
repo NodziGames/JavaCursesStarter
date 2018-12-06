@@ -10,6 +10,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 
 import engine.Colors;
 import engine.Txt;
+import main.states.*;
 
 import java.io.IOException;
 
@@ -24,14 +25,21 @@ public class Application {
     private int width;
     private int height;
 
+    public static String state;
+
     private String border;
     private TextColor.ANSI borderColor;
+
+
+    //Set up states
+    State menu = new Menu();
+    State app = new App();
 
 
 
     //!!!! YOU SHOULDN'T NEED TO MODIFY THESE! SCROLL DOWN TO GET TO THE SECTION YOU SHOULD BE CHANGING
 
-    public Application(int width, int height) throws IOException {
+    public Application(int width, int height, String name, String state) throws IOException {
 
         this.width = width;
         this.height = height;
@@ -40,23 +48,27 @@ public class Application {
 
         TerminalSize size = new TerminalSize(width, height);
 
-        terminal = new DefaultTerminalFactory().setInitialTerminalSize(size).createTerminal();
+        this.state = state;
+
+        terminal = new DefaultTerminalFactory().setInitialTerminalSize(size).setTerminalEmulatorTitle(name).createTerminal();
         screen = new TerminalScreen(terminal);
         screen.startScreen();
 
         drawBorders();
     }
 
-    public Application(int width, int height, String border, TextColor.ANSI borderColor) throws IOException {
+    public Application(int width, int height, String name, String state, String border, TextColor.ANSI borderColor) throws IOException {
 
         this.width = width;
         this.height = height;
         this.border = border;
         this.borderColor = borderColor;
 
+        this.state = state;
+
         TerminalSize size = new TerminalSize(width, height);
 
-        terminal = new DefaultTerminalFactory().setInitialTerminalSize(size).createTerminal();
+        terminal = new DefaultTerminalFactory().setInitialTerminalSize(size).setTerminalEmulatorTitle(name).createTerminal();
         screen = new TerminalScreen(terminal);
         screen.startScreen();
 
@@ -89,24 +101,35 @@ public class Application {
         //Hides the cursor
         screen.setCursorPosition(null);
 
-        new Txt(64, 4, "WELCOME TO THE EXAMPLE APP", Colors.black, Colors.cyan).print();
+        new Txt(55, 4, "WELCOME TO THE EXAMPLE APP. PRESS ENTER TO CONTINUE", Colors.black, Colors.cyan).print();
         screen.refresh();
     }
 
     public void loop() throws IOException {
 
         //Main application loop. Runs once upon every key press
-        while (true) {
+        while (true ) {
 
             KeyType key = getPressed();
 
             if (key == KeyType.Escape) {
                 break ;
             }
-
             screen.clear();
-            new Txt(60, 19,"YOU PRESSED: " + key.toString()).print();
+
             drawBorders();
+
+            //State handler;
+            switch (state) {
+
+                case "menu":
+                    menu.loop(key);
+                    break ;
+                case "app":
+                    app.loop(key);
+                    break ;
+            }
+
             screen.refresh();
         }
     }
