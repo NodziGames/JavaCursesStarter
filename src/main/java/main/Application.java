@@ -101,7 +101,7 @@ public class Application {
         //Hides the cursor
         screen.setCursorPosition(null);
 
-        new Txt(55, 4, "WELCOME TO THE EXAMPLE APP. PRESS ENTER TO CONTINUE", Colors.black, Colors.cyan).print();
+        new Txt(75, 4, "WELCOME TO THE EXAMPLE APP. PRESS ENTER TO CONTINUE", Colors.black, Colors.cyan).print_centered();
         screen.refresh();
     }
 

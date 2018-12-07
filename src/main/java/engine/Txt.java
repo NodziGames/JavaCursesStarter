@@ -54,4 +54,18 @@ public class Txt {
         finalText.setForegroundColor(fgColor);
         finalText.putString(x, y, text);
     }
+
+    public void print_right_aligned() {
+        TextGraphics finalText = Application.screen.newTextGraphics();
+        finalText.setBackgroundColor(bgColor);
+        finalText.setForegroundColor(fgColor);
+        finalText.putString(x - text.length(), y, text);
+    }
+
+    public void print_centered() {
+        TextGraphics finalText = Application.screen.newTextGraphics();
+        finalText.setBackgroundColor(bgColor);
+        finalText.setForegroundColor(fgColor);
+        finalText.putString((int) (x - Math.floor(text.length() / 2)), y, text);
+    }
 }
