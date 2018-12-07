@@ -101,7 +101,11 @@ public class Application {
         //Hides the cursor
         screen.setCursorPosition(null);
 
-        new Txt(55, 4, "WELCOME TO THE EXAMPLE APP. PRESS ENTER TO CONTINUE", Colors.black, Colors.cyan).print();
+        new Txt(75, 5, "=============================================", Colors.black, Colors.cyan).print_centered();
+        new Txt(75, 6, "WELCOME TO ZOMBASCII. PRESS ENTER TO CONTINUE", Colors.black, Colors.cyan).print_centered();
+        new Txt(75, 7, "=============================================", Colors.black, Colors.cyan).print_centered();
+        new Txt(5, 36, "2018 @NodziGames").print();
+        new Txt(145, 36, "www.nodzigames.com").print_right_aligned();
         screen.refresh();
     }
 
