@@ -10,7 +10,7 @@ public class Main {
         //Init app
         Application app = new Application(150, 40, "ZombAscii", "menu");
 
-        //Configures App
+        //Configures Game
         app.init();
 
         //Runs main app loop

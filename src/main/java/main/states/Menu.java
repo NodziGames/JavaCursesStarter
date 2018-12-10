@@ -6,6 +6,7 @@ import engine.Txt;
 import main.Application;
 import sun.awt.X11.Screen;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,9 +54,17 @@ public class Menu extends State {
         if (key == KeyType.Enter && steps != 0) {
             switch (selection) {
                 case 0:
-                    Application.state = "app";
+                    Application.state = "game";
+                    break ;
+                case 1:
+                    System.out.println("Loading Not Implemented Yet");
                     break ;
                 case 2:
+                    try {
+                        Application.terminal.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     System.exit(0);
                     break ;
             }

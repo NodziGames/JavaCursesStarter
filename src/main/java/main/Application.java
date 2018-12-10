@@ -33,7 +33,7 @@ public class Application {
 
     //Set up states
     public static State menu = new Menu();
-    public static State app = new App();
+    public static State game = new Game();
 
 
 
@@ -129,18 +129,19 @@ public class Application {
                 case "menu":
                     menu.logic(key);
                     break ;
-                case "app":
-                    app.logic(key);
+                case "game":
+                    game.logic(key);
                     break ;
             }
 
+            //Render handler
             switch (state) {
 
                 case "menu":
                     menu.render();
                     break ;
-                case "app":
-                    app.render();
+                case "game":
+                    game.render();
                     break ;
             }
 
