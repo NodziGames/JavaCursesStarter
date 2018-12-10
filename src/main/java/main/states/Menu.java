@@ -4,6 +4,7 @@ import com.googlecode.lanterna.input.KeyType;
 import engine.Colors;
 import engine.Txt;
 import main.Application;
+import sun.awt.X11.Screen;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class Menu extends State {
 
     private List<String> options = new ArrayList<>();
     private int selection;
+    private int steps;
 
     public Menu() {
         super("menu");
@@ -23,6 +25,8 @@ public class Menu extends State {
         options.add("Exit");
 
         selection = 0;
+
+        steps = 0;
     }
 
     @Override
@@ -45,6 +49,19 @@ public class Menu extends State {
                 selection += 1;
             }
         }
+
+        if (key == KeyType.Enter && steps != 0) {
+            switch (selection) {
+                case 0:
+                    Application.state = "app";
+                    break ;
+                case 2:
+                    System.exit(0);
+                    break ;
+            }
+        }
+
+        steps += 1;
     }
 
     @Override

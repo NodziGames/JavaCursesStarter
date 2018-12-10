@@ -10,11 +10,6 @@ public class State {
         this.name = name;
     }
 
-    public void loop(KeyType key) {
-        logic(key);
-        render();
-    }
-
 
     public void logic(KeyType key) {
 

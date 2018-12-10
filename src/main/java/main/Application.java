@@ -32,8 +32,8 @@ public class Application {
 
 
     //Set up states
-    State menu = new Menu();
-    State app = new App();
+    public static State menu = new Menu();
+    public static State app = new App();
 
 
 
@@ -127,10 +127,20 @@ public class Application {
             switch (state) {
 
                 case "menu":
-                    menu.loop(key);
+                    menu.logic(key);
                     break ;
                 case "app":
-                    app.loop(key);
+                    app.logic(key);
+                    break ;
+            }
+
+            switch (state) {
+
+                case "menu":
+                    menu.render();
+                    break ;
+                case "app":
+                    app.render();
                     break ;
             }
 
