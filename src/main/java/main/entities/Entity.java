@@ -12,7 +12,7 @@ public class Entity {
     public int width;
     public int height;
 
-    private String graphics;
+    public String graphics;
 
     public Entity(int x, int y, int width, int height, String sprite) {
 
@@ -55,9 +55,18 @@ public class Entity {
 
     public boolean collisionWith(Entity entity) {
 
-        if (x + width - 1 < entity.x || x > entity.x + entity.width - 1 || y + height - 1 < entity.y || y > entity.x + entity.height - 1)
+        if (x + width - 1 < entity.x ||
+                x > entity.x + entity.width - 1 ||
+                y + height - 1 < entity.y ||
+                y > entity.x + entity.height - 1)
             return false;
         else
             return true;
+    }
+
+    public boolean atPos(int xpos, int ypos) {
+        if ((x + width - 1 >= xpos && x <= xpos) && (y + height - 1 >= ypos && y <= ypos))
+            return true;
+        return false;
     }
 }

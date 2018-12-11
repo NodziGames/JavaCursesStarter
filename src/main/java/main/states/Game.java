@@ -3,38 +3,57 @@ package main.states;
 
 import com.googlecode.lanterna.input.KeyType;
 import engine.Colors;
-import engine.Txt;
 import main.assets.Sprites;
 import main.entities.Entity;
-import main.entities.Player;
+import main.entities.Location;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Game extends State {
 
-   public Entity player;
-   public Entity box;
+   public List<Location> locations = new ArrayList<>();
+   private int selection = 0;
 
     public Game() {
         super("game");
-        player = new Player(5, 5, 3, 3, Sprites.spr_player);
-        box = new Entity(20, 20, 5, 3, Sprites.spr_box);
+
+        locations.add(new Location(20, 10, 8, 5, Sprites.spr_house1, "Residence 1"));
+        locations.add(new Location(40, 10, 8, 5, Sprites.spr_house1, "Residence 2"));
+        locations.add(new Location(30, 20, 8, 5, Sprites.spr_house1, "Residence 3"));
     }
 
     @Override
     public void logic(KeyType key) {
 
-        if (key == KeyType.ArrowUp && player.y > 1)
-            player.move(0, -1);
-        if (key == KeyType.ArrowDown && player.y < 149)
-            player.move(0, 1);
-        if (key == KeyType.ArrowLeft && player.x > 1)
-            player.move(-1, 0);
-        if (key == KeyType.ArrowRight && player.x < 149)
-            player.move(1, 0);
+        if (key == KeyType.ArrowRight) {
+            if (selection == locations.size() - 1) {
+                selection = 0;
+            }
+            else {
+                selection += 1;
+            }
+        }
+
+        if (key == KeyType.ArrowLeft) {
+            if (selection == 0) {
+                selection = locations.size() - 1;
+            }
+            else {
+                selection -= 1;
+            }
+        }
     }
 
     @Override
     public void render() {
-        player.draw();
-        box.draw();
+        for (int i = 0; i < locations.size(); i++) {
+            if (i == selection) {
+                locations.get(i).drawHighlighted();
+            }
+            else {
+                locations.get(i).draw();
+            }
+        }
     }
 }

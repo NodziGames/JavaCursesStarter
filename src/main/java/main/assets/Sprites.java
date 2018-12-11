@@ -4,48 +4,18 @@ public class Sprites {
 
     /*
 
-     O
-    -|-
-    / \
+      ____
+     /    \
+    /______\
+    |      |
+    |__[]__|
 
      */
 
-    public static String spr_player =
-            " O " +
-            "-|-" +
-            "/ \\";
-
-
-
-
-
-    /*
-
-    (---)==|
-     ||
-
-     */
-
-    public static String spr_blaster =
-            "(---)==|" +
-            " ||     ";
-
-
-
-
-
-
-
-    /*
-
-    /---\
-    |---|
-    \---/
-
-     */
-
-    public static String spr_box =
-            "/---\\" +
-            "|---|" +
-            "\\---/";
+    public static String spr_house1 =
+                    "  ____  " +
+                    " /    \\ " +
+                    "/______\\" +
+                    "|      |" +
+                    "|__[]__|";
 }
