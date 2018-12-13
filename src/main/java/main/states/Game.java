@@ -20,9 +20,7 @@ public class Game extends State {
     public Game() {
         super("game");
 
-        locations.add(new Location(20, 10, 8, 5, Sprites.spr_house1, "Residence 1"));
-        locations.add(new Location(40, 10, 8, 5, Sprites.spr_house1, "Residence 2"));
-        locations.add(new Location(30, 20, 8, 5, Sprites.spr_house1, "Residence 3"));
+        locations.add(new Location(20, 20, 8, 5, Sprites.spr_house1, "Residence", 15));
     }
 
     @Override
