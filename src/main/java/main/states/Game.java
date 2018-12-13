@@ -45,6 +45,10 @@ public class Game extends State {
                 selection -= 1;
             }
         }
+
+        if (key == KeyType.Enter) {
+            player.tax();
+        }
     }
 
     @Override
