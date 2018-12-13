@@ -4,6 +4,7 @@ package main.states;
 import com.googlecode.lanterna.input.KeyType;
 import engine.Colors;
 import main.assets.Sprites;
+import main.controllers.Player;
 import main.entities.Entity;
 import main.entities.Location;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class Game extends State {
 
    public List<Location> locations = new ArrayList<>();
+   public Player player = new Player();
    private int selection = 0;
 
     public Game() {
@@ -55,5 +57,6 @@ public class Game extends State {
                 locations.get(i).draw();
             }
         }
+        player.draw();
     }
 }
