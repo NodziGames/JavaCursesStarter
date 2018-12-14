@@ -15,12 +15,17 @@ public class Game extends State {
 
    public List<Location> locations = new ArrayList<>();
    public Player player = new Player();
+   public List<String> actions = new ArrayList<>();
+
    private int selection = 0;
+   private int actionSelection = 0;
 
     public Game() {
         super("game");
 
         locations.add(new Location(20, 20, 8, 5, Sprites.spr_house1, "Residence", 15));
+        actions.add("LOOT: Supplies X 1, Risk x 1");
+        actions.add("PLUNDER: Supplies X 2, Risk X 1.5");
     }
 
     @Override
@@ -41,6 +46,24 @@ public class Game extends State {
             }
             else {
                 selection -= 1;
+            }
+        }
+
+        if (key == KeyType.ArrowDown) {
+            if (actionSelection == actions.size() - 1) {
+                actionSelection = 0;
+            }
+            else {
+                actionSelection += 1;
+            }
+        }
+
+        if (key == KeyType.ArrowUp) {
+            if (actionSelection == 0) {
+                actionSelection = actions.size() - 1;
+            }
+            else {
+                actionSelection -= 1;
             }
         }
 
